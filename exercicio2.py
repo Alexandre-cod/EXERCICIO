@@ -16,7 +16,7 @@ def cria_baralho():
     copas = '♥'
     j=2
     lista.append('A{}'.format(copas))
-    while i<=10:
+    while j<=10:
         lista.append('{}''{}'.format(j,copas))
         j+=1
     lista.append('J{}'.format(copas))
@@ -28,7 +28,7 @@ def cria_baralho():
     ouros = '♦'
     k=2
     lista.append('A{}'.format(ouros))
-    while i<=10:
+    while k<=10:
         lista.append('{}''{}'.format(k,ouros))
         k+=1
     lista.append('J{}'.format(ouros))
@@ -39,7 +39,7 @@ def cria_baralho():
     paus = '♣'
     m=2
     lista.append('A{}'.format(paus))
-    while i<=10:
+    while m<=10:
         lista.append('{}''{}'.format(m,paus))
         m+=1
     lista.append('J{}'.format(paus))
