@@ -67,3 +67,17 @@ def extrai_valor(carta):
     return valor
     
     
+#lista de movimentos possiveis
+def lista_movimentos_possiveis(lista,i):
+    lista_result = []
+    if i > 0:
+        if (extrai_naipe(lista[i]) == extrai_naipe(lista[i-1])) or extrai_valor(lista[i]) == extrai_valor(lista[i-1]):
+            lista_result.append(1)
+
+
+    if i>2:
+        if (extrai_naipe(lista[i]) == extrai_naipe(lista[i-3])) or extrai_valor(lista[i]) == extrai_valor(lista[i-3]):
+            lista_result.append(3)
+
+
+    return lista_result
