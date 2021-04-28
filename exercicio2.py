@@ -1,6 +1,8 @@
+#exercicios do academia
+
+#cria baralho
 def cria_baralho():
     lista = []
-    
     espadas = '♠'
     i=2
     lista.append('A{}'.format(espadas))
@@ -10,9 +12,7 @@ def cria_baralho():
     lista.append('J{}'.format(espadas))
     lista.append('Q{}'.format(espadas))
     lista.append('K{}'.format(espadas))
-
-
-
+    
     copas = '♥'
     j=2
     lista.append('A{}'.format(copas))
@@ -23,8 +23,6 @@ def cria_baralho():
     lista.append('Q{}'.format(copas))
     lista.append('K{}'.format(copas))
     
-
-
     ouros = '♦'
     k=2
     lista.append('A{}'.format(ouros))
@@ -35,7 +33,6 @@ def cria_baralho():
     lista.append('Q{}'.format(ouros))
     lista.append('K{}'.format(ouros))
     
-
     paus = '♣'
     m=2
     lista.append('A{}'.format(paus))
@@ -46,11 +43,9 @@ def cria_baralho():
     lista.append('Q{}'.format(paus))
     lista.append('K{}'.format(paus))
 
-
     return lista
 
-
-
+#extrai naipes
 def extrai_naipe(carta):
     if carta[1] == '0':
         naipe = carta[2]
@@ -60,8 +55,8 @@ def extrai_naipe(carta):
     
     return (naipe)
     
-  
-
+    
+  #extrai o valor
 def extrai_valor(carta):
     if carta[1] == '0':
         valor = '10'
