@@ -50,6 +50,7 @@ def cria_baralho():
     return lista
 
 
+
 def extrai_naipe(carta):
     if carta[1] == '0':
         naipe = carta[2]
@@ -59,3 +60,17 @@ def extrai_naipe(carta):
     
     return (naipe)
     
+  
+
+def extrai_valor(carta):
+    if carta[1] == '0':
+        valor = 10
+
+    if carta[1] != '0':
+        valor = carta[0]
+
+    return valor
+    
+    
+
+
