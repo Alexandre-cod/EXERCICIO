@@ -89,3 +89,19 @@ def empilha(lista,ori,des):
     lista.remove(valor)
     lista[des] = valor
     return lista
+
+#checa se possui movimentos possiveis
+def possui_movimentos_possiveis(baralho):
+    cartasmov = []
+    j = 0
+    while j<len(baralho):
+        if (lista_movimentos_possiveis(baralho,j)) != []:
+            cartasmov.append(baralho[j])
+        j+=1
+
+    if cartasmov == []:
+        return False
+
+    if cartasmov != []:
+        return True
+
