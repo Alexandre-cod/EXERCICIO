@@ -1,4 +1,4 @@
-#embaralha o baralho criado pela função e imprime termo por termo.
+#embaralha o baralho criado pela função, imprime termo por termo, pede pra escolher uma carta
 def cria_baralho():
     lista = []
     espadas = '♠'
@@ -39,6 +39,10 @@ def cria_baralho():
     lista.append('K{}'.format(paus))
     return lista
 
+
+
+input('vamos jogar?')
+
 import random
 ordenadas = cria_baralho()
 random.shuffle(ordenadas)
@@ -51,6 +55,8 @@ while k<len(ordenadas):
         string = espaço + str(k+1)+ponto +ordenadas[k] 
     else:
         string = str(k+1)+ponto +ordenadas[k]
-   
+    
     print(string)
     k+=1
+
+escolha = input('Escolha uma carta (digite um numero entre 1 e {0})'.format(len(ordenadas)))
