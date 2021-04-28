@@ -86,6 +86,6 @@ def lista_movimentos_possiveis(lista,i):
 #empilha as cartas
 def empilha(lista,ori,des):
     valor = lista[ori]
-    lista.insert(des,valor)
-    lista.pop(ori)
+    lista.remove(valor)
+    lista[des] = valor
     return lista
