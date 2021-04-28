@@ -81,3 +81,12 @@ def lista_movimentos_possiveis(lista,i):
 
 
     return lista_result
+
+
+#empilha as cartas
+def empilha(lista, ori, des):
+    lista.insert(des, lista[ori])
+    lista.remove(lista[ori])
+    des_mais = des+1
+    lista.remove(lista[des_mais])
+    return lista
