@@ -64,7 +64,7 @@ def extrai_naipe(carta):
 
 def extrai_valor(carta):
     if carta[1] == '0':
-        valor = 10
+        valor = '10'
 
     if carta[1] != '0':
         valor = carta[0]
@@ -72,5 +72,3 @@ def extrai_valor(carta):
     return valor
     
     
-
-
