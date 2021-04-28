@@ -66,7 +66,7 @@ def extrai_valor(carta):
     if carta[1] == '0':
         valor = '10'
 
-    if carta[1] != '0':
+    else:
         valor = carta[0]
 
     return valor
