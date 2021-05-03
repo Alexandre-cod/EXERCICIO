@@ -1,6 +1,5 @@
 #principais erros concertados e melhor organizado e comentado
-#faltam poucos ajustes no funcionamento do jogo e outros na estética e nas frases printadas.
-
+#faltam poucos ajustes no funcionamento do jogo (quando a carta pode ser movida pra duas) e outros na estética e nas frases printadas.
 def cria_baralho():
     lista = []
     espadas = '♠'
@@ -85,11 +84,16 @@ def possui_movimentos_possiveis(baralho):
     if cartasmov != []:
         return True
 #//////
-
+#//////
+#//////
+#//////
 input('vamos jogar?')
 import random
 ordenadas = cria_baralho()
 random.shuffle(ordenadas)
+
+
+
 
 while possui_movimentos_possiveis(ordenadas):
     ponto = '.  '
@@ -115,16 +119,16 @@ while possui_movimentos_possiveis(ordenadas):
             escolha = int(input('Posição inválida. Por favor digite um número entre 1 e {})'.format(len(ordenadas))))
         
         if len(lista_movimentos_possiveis(ordenadas,indice)) == 0:
-            escolha = int(input('A carta {0} não pode ser movida. Por favor digite um numero entre 1 e {1})'.format((indice+1),len(ordenadas))))
+            escolha = int(input('A carta {0} não pode ser movida. Por favor digite um numero entre 1 e {1})'.format((ordenadas[indice]),len(ordenadas))))
             indice = (escolha - 1)
 
     
     #se tiver uma opção para mover, vai automatico
     if len(lista_movimentos_possiveis(ordenadas,indice)) == 1:
         destino = indice - ((lista_movimentos_possiveis(ordenadas,indice))[0])
+        ordenadas = empilha(ordenadas,indice,destino)
 
-
-    # se tiver duas, pergunta e então  move
+    # se tiver duas, pergunta e então  move se for possivel de mover
     if len(lista_movimentos_possiveis(ordenadas,indice)) == 2:
         print ('Sobre qual carta gostaria de empilhar o {}'.format(ordenadas[indice]))
         print (('1. {}'.format(ordenadas[indice-1])))
@@ -135,16 +139,15 @@ while possui_movimentos_possiveis(ordenadas):
 
         if resp == 1:
             destino = ordenadas[indice-1]
-
+            ordenadas = empilha(ordenadas,indice,destino)
         if resp ==2:
             destino = ordenadas[indice-3]
-    
-    ordenadas = empilha(ordenadas,indice,destino)
+            ordenadas = empilha(ordenadas,indice,destino)
 
 
 
 if len(ordenadas) == 1:
-    print('parabens, você venceu')
+    print('Parabens, você venceu')
 
 else:
     'Não há mais movimentos possíveis, você perdeu.'
