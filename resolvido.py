@@ -1,7 +1,6 @@
-#dando erro, depois concertar
+#principais erros concertados e melhor organizado e comentado
+#faltam poucos ajustes no funcionamento do jogo e outros na estética e nas frases printadas.
 
-
-import random
 def cria_baralho():
     lista = []
     espadas = '♠'
@@ -45,10 +44,10 @@ def cria_baralho():
 def extrai_naipe(carta):
     if carta[1] == '0':
         naipe = carta[2]
-    
+
     if carta[1] != '0':
         naipe = carta[1]
-    
+
     return (naipe)
 #///////
 def extrai_valor(carta):
@@ -85,81 +84,67 @@ def possui_movimentos_possiveis(baralho):
         return False
     if cartasmov != []:
         return True
-
-
-def imprime_cartas(ordenadas):  #recebe uma lista ja organizada das cartas (ordenada) e imprime cada uma
-    #depois arrumar o 10 para a esquerda.
-    ponto = '.  '
-    espaço = ' '
-    k = 0
-    string = ''
-    while k<len(ordenadas)+1:
-        if k<9:
-            string = espaço + str(k+1)+ponto +ordenadas[k]
-        else:
-            string = str(k+1)+ponto +ordenadas[k]
-    
-        print(string)
-        k+=1
-
 #//////
-#inicia e printa o baralho com 52 cartas
-
 
 input('vamos jogar?')
-
+import random
 ordenadas = cria_baralho()
 random.shuffle(ordenadas)
 
-
-
-
-#se ha algo a se fazer com o baralho:
 while possui_movimentos_possiveis(ordenadas):
-    print(imprime_cartas(ordenadas))
+    ponto = '.  '
+    espaço = ' '
+    k = 0
+
+#imprime o baralho
+    while k<len(ordenadas):
+        if k<9:
+            string = '0'+str(k+1)+ponto +ordenadas[k] 
+        else:
+            string = str(k+1)+ponto +ordenadas[k]
+
+        print(string)
+        k+=1
+    
+    #pede pra escolher ate ser uma com movimentos
     escolha = int(input('Escolha uma carta (digite um numero entre 1 e {0})'.format(len(ordenadas))))
-    indice = (escolha - 1)   #o numero que a pessoa digita não é igual ao indice da carta na lista ordenadas.
-
-#vai perguntar ate a carte ter movimentos
-    while len(lista_movimentos_possiveis(ordenadas,indice)) == 0:
-        escolha = int(input('Escolha uma carta (digite um numero entre 1 e {0})'.format(len(ordenadas))))
-
-
-#se ha uma opção de movimento pra aquela carta
-    destino = 0
-    if len(lista_movimentos_possiveis(ordenadas,indice)) == 1:
-        lista_movimentos_possiveis(ordenadas,indice)[0] = destino
-        ordenadas = empilha(ordenadas,indice,destino)
-
-#se ha duas opções
-    if len(lista_movimentos_possiveis(ordenadas,indice)) == 2:
-        print('Sobre qual carta gostaria de empilhar o {}'.format(ordenadas[indice]))
-        print (('1. {}'.format(ordenadas[indice-1])))
-        print (('2. {}'.format(ordenadas[indice-3])))
-        resp = 0
-        while resp != 1 and resp!=2:
-            resp = int(input('Escolha uma carta. digite um número entre 1 e {}'.format(len(ordenadas))))
-
-        if resp == 1:
-            destino = (indice-1)
-        if resp == 2:
-            destino = (indice-3)
-        ordenadas = empilha(ordenadas,indice,destino)
+    
+    indice = (escolha - 1)
+    while escolha<=0 or escolha>len(ordenadas) or len(lista_movimentos_possiveis(ordenadas,indice)) == 0:
+        if escolha<=0 or escolha>len(ordenadas):
+            escolha = int(input('Posição inválida. Por favor digite um número entre 1 e {})'.format(len(ordenadas))))
         
-
+        if len(lista_movimentos_possiveis(ordenadas,indice)) == 0:
+            escolha = int(input('A carta {0} não pode ser movida. Por favor digite um numero entre 1 e {1})'.format((indice+1),len(ordenadas))))
+            indice = (escolha - 1)
 
     
-else:
-    print('terminou')
+    #se tiver uma opção para mover, vai automatico
+    if len(lista_movimentos_possiveis(ordenadas,indice)) == 1:
+        destino = indice - ((lista_movimentos_possiveis(ordenadas,indice))[0])
 
 
-
-
-#se ha dois movimentos possiveis
-if len(lista_movimentos_possiveis(ordenadas,indice)) == 2:
-    print ('Sobre qual carta gostaria de empilhar o {}'.format(ordenadas[indice]))
-    print (('1. {}'.format(ordenadas[indice-1])))
-    print (('2. {}'.format(ordenadas[indice-3])))
-    resp = 0
-    while resp != 1 and resp!=2:
+    # se tiver duas, pergunta e então  move
+    if len(lista_movimentos_possiveis(ordenadas,indice)) == 2:
+        print ('Sobre qual carta gostaria de empilhar o {}'.format(ordenadas[indice]))
+        print (('1. {}'.format(ordenadas[indice-1])))
+        print (('2. {}'.format(ordenadas[indice-3])))
         resp = int(input('Escolha uma carta. digite um número entre 1 e {}'.format(len(ordenadas))))
+        while resp != 1 and resp!= 2:
+            resp = input(int('Escolha uma carta. digite um número entre 1 e {}'.format(len(ordenadas))))
+
+        if resp == 1:
+            destino = ordenadas[indice-1]
+
+        if resp ==2:
+            destino = ordenadas[indice-3]
+    
+    ordenadas = empilha(ordenadas,indice,destino)
+
+
+
+if len(ordenadas) == 1:
+    print('parabens, você venceu')
+
+else:
+    'Não há mais movimentos possíveis, você perdeu.'
