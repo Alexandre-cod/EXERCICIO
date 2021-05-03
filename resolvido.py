@@ -150,4 +150,4 @@ if len(ordenadas) == 1:
     print('Parabens, você venceu')
 
 else:
-    'Não há mais movimentos possíveis, você perdeu.'
+    print('Não há mais movimentos possíveis, você perdeu.')
