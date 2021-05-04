@@ -1,5 +1,4 @@
-#principais erros concertados e melhor organizado e comentado
-#faltam poucos ajustes no funcionamento do jogo (quando a carta pode ser movida pra duas) e outros na estética e nas frases printadas.
+#erros corrigidos, so falta cores etc
 def cria_baralho():
     lista = []
     espadas = '♠'
@@ -92,14 +91,10 @@ import random
 ordenadas = cria_baralho()
 random.shuffle(ordenadas)
 
-
-
-
 while possui_movimentos_possiveis(ordenadas):
     ponto = '.  '
     espaço = ' '
     k = 0
-
 #imprime o baralho
     while k<len(ordenadas):
         if k<9:
@@ -135,13 +130,13 @@ while possui_movimentos_possiveis(ordenadas):
         print (('2. {}'.format(ordenadas[indice-3])))
         resp = int(input('Escolha uma carta. digite um número entre 1 e {}'.format(len(ordenadas))))
         while resp != 1 and resp!= 2:
-            resp = input(int('Escolha uma carta. digite um número entre 1 e {}'.format(len(ordenadas))))
+            resp = int(input('Escolha uma carta. digite um número entre 1 e {}'.format(len(ordenadas))))
 
         if resp == 1:
-            destino = ordenadas[indice-1]
+            destino = indice-1
             ordenadas = empilha(ordenadas,indice,destino)
         if resp ==2:
-            destino = ordenadas[indice-3]
+            destino = indice-3
             ordenadas = empilha(ordenadas,indice,destino)
 
 
