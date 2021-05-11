@@ -1,4 +1,4 @@
-#exercicios do academia
+#este documento foi reservado para os comits das funções que o Academia sugeria para a resolução do codigo.
 
 #cria baralho
 def cria_baralho():
