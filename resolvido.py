@@ -1,4 +1,4 @@
-#erros corrigidos, so falta cores etc
+#Este documento foi reservado para a implementação do jogo em si.
 def cria_baralho():
     lista = []
     espadas = '♠'
